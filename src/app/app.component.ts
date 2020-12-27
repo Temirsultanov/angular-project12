@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MyWorker, MyWorkerType, myWorkingDatabase } from './shared/worker.model';
 
 @Component({
@@ -10,8 +10,12 @@ export class AppComponent {
   title = 'List of workers';
   workers: MyWorker[] = myWorkingDatabase
   myWorkerType = MyWorkerType;
-  currentItem : MyWorker[] = [];
   index: number = 0;
+  name: string = '';
+  surname: string = '';
+  type: number = 0;
+  change : boolean = false;
+  changeId : number = 0;
   getByTag(type: number){
     return this.workers.filter(worker => worker.type === type);
   }
@@ -19,36 +23,25 @@ export class AppComponent {
     this.workers.splice(this.workers.findIndex(worker => worker.id === id), 1);
   }
   onChangeWorker(id: number){
-    let index : number = 0;
+    this.changeId = id;
     for (let i = 0; i < this.workers.length; i++) {
       if (this.workers[i]['id'] === id) {
-        index = i;
+        this.name = this.workers[i]['name'];
+        this.surname = this.workers[i]['surname'];
+        this.type = this.workers[i]['type'];
+        this.change = true;
       }
     }
-    let namePrompt = this.workers[this.index]['name'];
-    let surnamePrompt = this.workers[this.index]['surname'];
-    let typePrompt = this.workers[this.index]['type'];
-    let namePrompt1 = prompt('Enter name', this.workers[index]['name']);
-    let surnamePrompt1 = prompt('Enter surname', this.workers[index]['surname']);
-    let typePrompt1 = prompt('Enter type', this.workers[index]['type'].toString());
-    if (namePrompt1 !== '' && surnamePrompt1 !== '' && typePrompt1 !== '' && Number(typePrompt1) > -1 && Number(typePrompt1) < 4) {
-      if (namePrompt1 !== null) {
-        namePrompt = namePrompt1;
+  }
+  changeWorker(worker: MyWorker){
+    for (let i = 0; i < this.workers.length; i++) {
+      if (this.workers[i]['id'] === this.changeId) {
+        this.workers[i]['name'] = worker.name;
+        this.workers[i]['surname'] = worker.surname;
+        this.workers[i]['type']= worker.type;
       }
-      if (surnamePrompt1 !== null) {
-        surnamePrompt = surnamePrompt1;
-      }
-      if (typePrompt1 !== null) {
-        typePrompt = Number(typePrompt1);
-      }
-      this.workers[index]['name'] = namePrompt;
-      this.workers[index]['surname'] = surnamePrompt;
-      this.workers[index]['type'] = typePrompt;
     }
-    else{
-      alert('Введите все строки в следующий раз и вводите нормальный type');
-    }
-
+    this.change = false;
   }
   onAddWorker(worker: MyWorker){
     let lastId = this.workers.length > 0 ? this.workers[this.workers.length-1]['id'] : 0;

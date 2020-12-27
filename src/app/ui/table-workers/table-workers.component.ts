@@ -21,10 +21,10 @@ export class TableWorkersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onDeleteWorker(id: number){
+  onDeleteWorker(id?: number){
     this.deleteWorker.emit(id);
   }
-  onChangeWorker(id: number) {
+  onChangeWorker(id?: number) {
     this.changeWorker.emit(id);
   }
 

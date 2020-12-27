@@ -2,7 +2,15 @@
   <div class="row">
     <h1 class="mt-5 mb-5">{{title}}</h1>
   </div>
-  <app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
+  <app-addform-worker
+    (addWorker)="onAddWorker($event)"
+    (changeWorker)="changeWorker($event)"
+    [name]="name"
+    [surname]="surname"
+    [type]="type"
+    [change]="change"
+  ></app-addform-worker>
+
   <app-table-workers
   [title]="'Programmers'"
   [workers]="getByTag(myWorkerType.programmer)"

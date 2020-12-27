@@ -1,13 +1,17 @@
 <div class="row">
   <div class="col-12 mb-3">
-    <h5>Add worker</h5>
+    <h5 *ngIf="!change">Add worker</h5>
+    <h5 *ngIf="change">Change worker</h5>
   </div>
-  <div class="col-3 mb-5">
+  <div class="col-2 mb-5">
     <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name">
   </div>
-  <div class="col-3">
+  <div class="col-2">
     <input type="text" class="form-control" placeholder="Surname" [(ngModel)]="surname">
   </div>
+  <!-- <div class="col-2">
+    <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="phone">
+  </div> -->
   <div class="col-3">
     <select class="form-control" [(ngModel)]="type">
       <option [ngValue]="myWorkerType.programmer">Programmer</option>
@@ -17,6 +21,7 @@
     </select>
   </div>
   <div class="col-3">
-    <button (click)="onAddWorker()" class="btn btn-primary">Add</button>
+    <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="!change">Add</button>
+    <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="change">Change</button>
   </div>
 </div>
