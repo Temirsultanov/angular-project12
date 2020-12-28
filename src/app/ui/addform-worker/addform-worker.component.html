@@ -1,27 +1,41 @@
-<div class="row">
-  <div class="col-12 mb-3">
-    <h5 *ngIf="!change">Add worker</h5>
-    <h5 *ngIf="change">Change worker</h5>
-  </div>
-  <div class="col-2 mb-5">
-    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name">
-  </div>
-  <div class="col-2">
-    <input type="text" class="form-control" placeholder="Surname" [(ngModel)]="surname">
-  </div>
-  <!-- <div class="col-2">
-    <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="phone">
-  </div> -->
-  <div class="col-3">
-    <select class="form-control" [(ngModel)]="type">
-      <option [ngValue]="myWorkerType.programmer">Programmer</option>
-      <option [ngValue]="myWorkerType.designer">Designer</option>
-      <option [ngValue]="myWorkerType.copywriter">Copywriter</option>
-      <option [ngValue]="myWorkerType.manager">Manager</option>
-    </select>
-  </div>
-  <div class="col-3">
-    <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="!change">Add</button>
-    <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="change">Change</button>
-  </div>
+<form action="" class="row" [formGroup]="myForm">
+    <div class="col-12 mb-3">
+      <h5 *ngIf="!change">Add worker</h5>
+      <h5 *ngIf="change">Change worker</h5>
+    </div>
+    <div class="col-2 mb-5">
+      <input type="text" name="name" class="form-control" placeholder="Name" formControlName="workerName">
+    </div>
+    <div class="col-2">
+      <input type="text" name="surname" class="form-control" placeholder="Surname" formControlName="workerSurname">
+    </div>
+    <div class="col-2">
+      <input type="text" name="phone" [textMask]="{mask: mask}" class="form-control" placeholder="Phone" formControlName="workerPhone" >
+    </div>
+    <div class="col-3">
+      <select class="form-control" formControlName="workerType">
+        <option [ngValue]="myWorkerType.programmer">Programmer</option>
+        <option [ngValue]="myWorkerType.designer">Designer</option>
+        <option [ngValue]="myWorkerType.copywriter">Copywriter</option>
+        <option [ngValue]="myWorkerType.manager">Manager</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="!change">Add</button>
+      <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="change">Change</button>
+    </div>
+</form>
+<div class="alert alert-danger alerts"
+    *ngIf="myForm.controls['workerName'].invalid && myForm.controls['workerName'].touched">
+    Введите имя
 </div>
+<div class="alert alert-danger alerts"
+    *ngIf="myForm.controls['workerSurname'].invalid && myForm.controls['workerSurname'].touched">
+    Введите фамилию
+</div>
+<div class="alert alert-danger alertf"
+    *ngIf="myForm.controls['workerPhone'].invalid && myForm.controls['workerPhone'].touched">
+    Некорректный номер телефона <br>
+    Пример : +x(xxx)xxx-xx-xx
+</div>
+

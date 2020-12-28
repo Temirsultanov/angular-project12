@@ -8,7 +8,7 @@
           <th scope="col">id</th>
           <th scope="col">Name</th>
           <th scope="col">Surname</th>
-          <!-- <th scope="col">Phone</th> -->
+          <th scope="col">Phone</th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -18,7 +18,7 @@
           <th scope="row">{{worker.id}}</th>
           <td>{{worker.name}}</td>
           <td>{{worker.surname}}</td>
-          <!-- <td>{{worker.phone}}</td> -->
+          <td>{{worker.phone}}</td>
           <td><button (click)="onDeleteWorker(worker.id)" class="btn btn-outline-danger btn-sm">Delete</button></td>
           <td><button (click)="onChangeWorker(worker.id)" class="btn btn-outline-success btn-sm">Change</button></td>
         </tr>

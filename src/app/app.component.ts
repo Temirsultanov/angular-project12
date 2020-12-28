@@ -13,6 +13,7 @@ export class AppComponent {
   index: number = 0;
   name: string = '';
   surname: string = '';
+  phone: string = '';
   type: number = 0;
   change : boolean = false;
   changeId : number = 0;
@@ -28,6 +29,7 @@ export class AppComponent {
       if (this.workers[i]['id'] === id) {
         this.name = this.workers[i]['name'];
         this.surname = this.workers[i]['surname'];
+        this.phone = this.workers[i]['phone'];
         this.type = this.workers[i]['type'];
         this.change = true;
       }
@@ -38,6 +40,7 @@ export class AppComponent {
       if (this.workers[i]['id'] === this.changeId) {
         this.workers[i]['name'] = worker.name;
         this.workers[i]['surname'] = worker.surname;
+        this.workers[i]['phone'] = worker.phone;
         this.workers[i]['type']= worker.type;
       }
     }
