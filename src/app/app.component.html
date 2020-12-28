@@ -7,27 +7,36 @@
     (changeWorker)="changeWorker($event)"
     [change]="change"
   ></app-addform-worker>
-
+  <div class="row mb-5">
+    <div class="col-8">Filter</div>
+    <div class="col-5">
+      <input type="text" [(ngModel)]="filterStr" class="form-control">
+    </div>
+  </div>
   <app-table-workers
   [title]="'Programmers'"
+  [filterStr]="filterStr"
   [workers]="getByTag(myWorkerType.programmer)"
   (deleteWorker)="onDeleteWorker($event)"
   (changeWorker)="onChangeWorker($event)"
   ></app-table-workers>
   <app-table-workers
   [title]="'Designers'"
+  [filterStr]="filterStr"
   [workers]="getByTag(myWorkerType.designer)"
   (deleteWorker)="onDeleteWorker($event)"
   (changeWorker)="onChangeWorker($event)"
   ></app-table-workers>
   <app-table-workers
   [title]="'Managers'"
+  [filterStr]="filterStr"
   [workers]="getByTag(myWorkerType.manager)"
   (deleteWorker)="onDeleteWorker($event)"
   (changeWorker)="onChangeWorker($event)"
   ></app-table-workers>
   <app-table-workers
   [title]="'Copywriters'"
+  [filterStr]="filterStr"
   [workers]="getByTag(myWorkerType.copywriter)"
   (deleteWorker)="onDeleteWorker($event)"
   (changeWorker)="onChangeWorker($event)"

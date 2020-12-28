@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let worker of workers">
+        <tr *ngFor="let worker of workers | myPipe: filterStr">
           <th scope="row">{{worker.id}}</th>
           <td>{{worker.name}}</td>
           <td>{{worker.surname}}</td>

@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'List of workers';
   constructor(private workersService : WorkersService, private httpWorkersService : HttpWorkersService){}
   workers: MyWorker[] = [];
+  filterStr : string = '';
   ngOnInit(){
     this.workersService.myFunc('Hey');
     this.getData();
