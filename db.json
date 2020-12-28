@@ -1,0 +1,28 @@
+{
+  "workers": [
+    {
+      "workerName": "Muhammad",
+      "workerSurname": "Alexandrov",
+      "workerType": 0,
+      "workerPhone": "+7(948) 242-65-84",
+      "id": 5
+    },
+    {
+      "name": "Apple iPhone 11 Pro 256Gb (Gold)",
+      "surname": "Alexandrov",
+      "phone": "+7(948) 242-65-84",
+      "type": 2,
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

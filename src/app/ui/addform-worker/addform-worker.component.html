@@ -21,8 +21,8 @@
       </select>
     </div>
     <div class="col-3">
-      <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="!change">Add</button>
-      <button (click)="onAddWorker()" class="btn btn-primary" *ngIf="change">Change</button>
+      <button (click)="onAddWorker()" [disabled]="myForm.invalid" class="btn btn-primary" *ngIf="!change">Add</button>
+      <button (click)="onAddWorker()" [disabled]="myForm.invalid" class="btn btn-primary" *ngIf="change">Change</button>
     </div>
 </form>
 <div class="alert alert-danger alerts"
